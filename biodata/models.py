@@ -3,11 +3,16 @@ from django.db import models
 
 
 # Create your models here.
+
 class Employee(models.Model):
+    """
+        This Employee class is our table and the variables below are the columns
+    """
     GENDER_CHOICES = (
         ('Male','Male'),
         ('Female', 'Female')
     )
+    # Creating our database table's columns
     firstname = models.CharField(max_length = 100)
     lastname = models.CharField(max_length = 100)
     age = models.IntegerField()

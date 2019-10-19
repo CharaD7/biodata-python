@@ -8,7 +8,7 @@ class EmployeeForm(forms.ModelForm):
 
     class Meta:
         model = Employee
-        # Creating our form fields
+        # Creating our form fields with Django's in-built forms
         fields = (
             'firstname',
             'lastname',
