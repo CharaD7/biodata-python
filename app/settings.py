@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'import_export',
 ]
 
+CELERY_BROKER_URL = " "
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
