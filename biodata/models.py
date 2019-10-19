@@ -13,13 +13,35 @@ class Biodata(models.Model):
         ('Female', 'Female')
     )
     # Creating our database table's columns
-    firstname = models.CharField(max_length = 100)
-    lastname = models.CharField(max_length = 100)
-    age = models.IntegerField()
-    gender = models.CharField(max_length = 20, choices = GENDER_CHOICES)
-    address = models.CharField(max_length = 200)
-    date_of_birth = models.DateField()
-    email = models.EmailField(max_length = 200)
+    firstname = models.CharField(
+        verbose_name = ("Firstname"),
+        max_length = 100
+    )
+    lastname = models.CharField(
+        verbose_name = ("Lastname"),
+        max_length = 100
+    )
+    age = models.IntegerField(
+        verbose_name = ("Age"),
+
+    )
+    gender = models.CharField(
+        verbose_name = ("Gender"),
+        max_length = 20,
+     choices = GENDER_CHOICES
+    )
+    address = models.CharField(
+        verbose_name = ("Address"),
+        max_length = 200
+    )
+    date_of_birth = models.DateField(
+        verbose_name = ("DoB"),
+
+    )
+    email = models.EmailField(
+        verbose_name = ("Email"),
+        max_length = 200
+    )
 
 
     def __str__(self):

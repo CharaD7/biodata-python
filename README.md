@@ -21,6 +21,8 @@ This app runs on a docker container with celery and rabbitmq handling some taks/
 
 - The configuration above is found on _line 79_ of the _settings.py_ file. You may change the values to suit your custom configuration but be certain it tallies with the configuration of your MySQL server.
 - Be sure user creatd has inherited permissions of a mySQL root user.
-- Run `python manage.py makemigrations` after successfully configuring your server
-- Next, run `python manage.py migrate` to apply changes
-- Create django-superuser by running the command `python manage.py createsuperuser`. Follow the triggers to create a superuser. Kindly desist from using admin as username for admin user.
+- Run `docker-compose exec python python manage.py makemigrations` after successfully configuring your server
+- Next, run `docker-compose exec python python manage.py migrate` to apply changes
+- Create django-superuser by running the command `docker-compose run app sh -c "python manage.py createsuperuser"`. Follow the triggers to create a superuser. Kindly desist from using admin as username for admin user.
+- Run `docker-compose up` to start the runserver in docker container.
+- Open up a browser and type in the address bar _`127.0.0.1:8000`_ to view the homepage.

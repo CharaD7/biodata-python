@@ -1,7 +1,5 @@
 version: "3.7"
 
-
-# Registering the services in our system
 services:
   app:
     build:

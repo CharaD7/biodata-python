@@ -1,12 +1,12 @@
 FROM python:3.8-alpine
-MAINTAINER CharaD7
+LABEL Author ="CharaD7" 
+LABEL version ="19.03.2"
 
 # Avoide python buffering
 ENV PYTHONUNBUFFERED 1
 
 COPY ./requirements.txt /requirements.txt
-RUN pip install -r /requirements.txt
-RUN pip install mysqlclient-1.4.4-cp38-cp38-win32.whl
+RUN pip install mysqlclient-1.4.4-cp38-cp38-win32.whl && pip install -r /requirements.txt
 
 RUN mkdir /app
 WORKDIR /app
