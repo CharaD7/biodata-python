@@ -1,4 +1,4 @@
-version: "19"
+version: "3.7"
 
 
 # Registering the services in our system
@@ -6,7 +6,7 @@ services:
   app:
     build:
       context: .
-    port:
+    ports:
       - "8000:8000"
     volumes:
       - ./app:/app
