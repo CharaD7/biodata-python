@@ -1,4 +1,4 @@
-FROM python:3.8-buster
+FROM python:3.8-alpine
 LABEL Author ="CharaD7" 
 LABEL version ="19.03.2"
 
