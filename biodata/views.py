@@ -10,14 +10,14 @@ from .forms import BiodataForm
 
 # Create your views here.
 def index(request):
-    return render(request, 'test_app/index.html')
+    return render(request, 'biodata/index.html')
 
 def preview(request):
     details = Biodata.objects.all()
     context = {
         'details': details
     }
-    return render(request, 'test_app/preview.html', context)
+    return render(request, 'biodata/preview.html', context)
 
 def  history(request):
     return redirect('/admin/')
@@ -34,7 +34,7 @@ def add_detail(request):
 
     else:
         form = BiodataForm
-        return render(request, 'test_app/add_detail.html', {'form':form})
+        return render(request, 'biodata/add_detail.html', {'form':form})
 
 def edit_detail(request, pk):
     detail = get_object_or_404(Biodata, pk=pk)
@@ -47,7 +47,7 @@ def edit_detail(request, pk):
     else:
         form = BiodataForm(instance = detail)
 
-        return render(request, 'test_app/edit_detail.html', {'form':form})
+        return render(request, 'biodata/edit_detail.html', {'form':form})
 
 def delete_detail(request, pk):
     Biodata.objects.filter(id=pk).delete()
@@ -55,13 +55,13 @@ def delete_detail(request, pk):
     context = {
         'details':details
     }
-    return render(request, 'test_app/preview.html', context)
+    return render(request, 'biodata/preview.html', context)
 
 
 # @permission_required('admin.can_add_log_entry')
 def upload_detail(request):
     if request.method == 'GET':
-        return render(request, 'test_app/upload_detail.html')
+        return render(request, 'biodata/upload_detail.html')
     
     csv_file = request.FILES['file']
     
@@ -85,4 +85,4 @@ def upload_detail(request):
             email = column[6]
         )
         context = {}
-        return render(request, 'test_app/preview.html', context, prompt)
+        return render(request, 'biodata/preview.html', context, prompt)
