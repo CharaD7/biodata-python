@@ -6,14 +6,14 @@ from django.contrib import messages
 
 
 from .models import *
-from .forms import EmployeeForm
+from .forms import BiodataForm
 
 # Create your views here.
 def index(request):
     return render(request, 'test_app/index.html')
 
 def preview(request):
-    details = Employee.objects.all()
+    details = Biodata.objects.all()
     context = {
         'details': details
     }
@@ -26,32 +26,32 @@ def  history(request):
 
 def add_detail(request):
     if request.method == "POST":
-        form = EmployeeForm(request.POST)
+        form = BiodataForm(request.POST)
 
         if form.is_valid():
             form.save()
             return redirect('/preview')
 
     else:
-        form = EmployeeForm
+        form = BiodataForm
         return render(request, 'test_app/add_detail.html', {'form':form})
 
 def edit_detail(request, pk):
-    detail = get_object_or_404(Employee, pk=pk)
+    detail = get_object_or_404(Biodata, pk=pk)
 
     if request.method == "POST":
-        form = EmployeeForm(request.POST, instance = detail)
+        form = BiodataForm(request.POST, instance = detail)
         if form.is_valid():
             form.save()
             return redirect('/preview')
     else:
-        form = EmployeeForm(instance = detail)
+        form = BiodataForm(instance = detail)
 
         return render(request, 'test_app/edit_detail.html', {'form':form})
 
 def delete_detail(request, pk):
-    Employee.objects.filter(id=pk).delete()
-    details = Employee.objects.all()
+    Biodata.objects.filter(id=pk).delete()
+    details = Biodata.objects.all()
     context = {
         'details':details
     }
@@ -75,7 +75,7 @@ def upload_detail(request):
 
     for column in csv.reader(io_string, delimiter = ',', quotechar = '|'):
         # _, allows us to skip the .save() call
-        _, created = Employee.objects.update_or_create(
+        _, created = Biodata.objects.update_or_create(
             firstname = column[0],
             lastname = column[1],
             age = column[2],

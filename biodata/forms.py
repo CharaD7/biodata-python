@@ -1,13 +1,13 @@
 from django import forms
-from .models import Employee
+from .models import Biodata
 
 
 
 # Creating a model to handle our forms
-class EmployeeForm(forms.ModelForm):
+class BiodataForm(forms.ModelForm):
 
     class Meta:
-        model = Employee
+        model = Biodata
         # Creating our form fields with Django's in-built forms
         fields = (
             'firstname',

@@ -4,7 +4,7 @@ from django.db import models
 
 # Create your models here.
 
-class Employee(models.Model):
+class Biodata(models.Model):
     """
         This Employee class is our table and the variables below are the columns
     """
