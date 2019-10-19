@@ -12,5 +12,5 @@ urlpatterns = [
     url(r'^add_detail/$', add_detail, name = 'add_detail'),
     url(r'^edit_detail/(?P<pk>\d+)$', edit_detail, name = 'edit_detail'),
     url(r'^delete_detail/(?P<pk>\d+)$', delete_detail, name = 'delete_detail'),
-    url(r'^upload_detail/$', upload_detail, name = 'upload_detail'),
+    url(r'^do_upload/$', do_upload, name = 'do_upload'),
 ]

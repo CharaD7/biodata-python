@@ -61,4 +61,17 @@ def delete_detail(request, pk):
 
 # @permission_required('admin.can_add_log_entry')
 def do_upload(request):
-    upload_detail.delay()
+    if request.method == 'GET':
+        return render(request, 'biodata/upload_detail.html')
+    
+    csv_file = request.FILES['file']
+    
+    if not csv_file.name.endswith('.csv'):
+        messages.error(request, 'This is not a csv file, please upload a csv file.')
+    
+    data_set = csv_file.read().decode('UTF-8')
+
+    io_string = io.StringIO(data_set) # Putting it in a stream
+    next(io_string)
+
+    upload_detail.delay(request, io_string)

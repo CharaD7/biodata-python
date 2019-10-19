@@ -40,6 +40,18 @@ This app runs on a docker container with celery and rabbitmq handling some taks/
 
 ***
 
+## Setback Manouvers
+
+In a case where you try to build docker and it fails because you have compatibility issues, visit the [docker documentation](https://docs.docker.com/) and carefully follow the setup and run procedures to successfully run the build for docker.
+
+In a case where build fails, the environment is already set up in the directory so ignore and run `python manage.py runserver` after following the procedures to setting up your database server and docker environment.
+
+***
+
+
+***
+
  _Kindly send me a mail at <jijakahn6@gmail.com> if you have any issues or suggestions_
  
+ ***
  ***
