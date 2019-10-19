@@ -24,7 +24,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')  # Registering the templates
 SECRET_KEY = 'hw^&wztv2qb!zp0t)5+5qh)g_#p2hl9q#(r7-*dz+*4^l)_vq2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'import_export',
 ]
 
-CELERY_BROKER_URL = " "
+CELERY_BROKER_URL = "amqp://rabbitmq"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

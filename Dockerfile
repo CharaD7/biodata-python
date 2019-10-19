@@ -6,7 +6,13 @@ LABEL version ="19.03.2"
 ENV PYTHONUNBUFFERED 1
 
 COPY ./requirements.txt /requirements.txt
-RUN pip install pip install -r /requirements.txt
+RUN pip install --no-cache-dir -r requirements/dev.txt
+
+COPY ./entrypoint.sh /entrypoint.sh
+
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
 
 RUN mkdir /app
 WORKDIR /app
