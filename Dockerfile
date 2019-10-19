@@ -6,6 +6,7 @@ ENV PYTHONUNBUFFERED 1
 
 COPY ./requirements.txt /requirements.txt
 RUN pip install -r /requirements.txt
+RUN pip install mysqlclient-1.4.4-cp38-cp38-win32.whl
 
 RUN mkdir /app
 WORKDIR /app
