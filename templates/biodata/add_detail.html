@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+
+{% block body %}
+<br>
+
+<div class="button-group">
+
+    <a href="{% url 'biodata:index' %}" class="btn btn-primary btn-md" role="button"> Go Home</a>
+
+    <a href="{% url 'biodata:biodata' %}" class="btn btn-primary btn-md" role="button"> Preview Details</a>
+
+    <a href="{% url 'biodata:upload_detail' %}" class="btn btn-primary btn-md" role="button"> Upload Detail</a>
+
+    <a href="/admin" class="btn btn-primary btn-md" role="button"> View History</a>
+
+</div>
+
+<br>
+
+<div class="container">
+
+    <h4 class="text-info">Add Detail</h4>
+
+    <form method="POST">
+        {% for field in form %}
+        {% csrf_token %}
+        
+            <div class="form-group row">
+                <label for="{{ field.name }}" class="col-2 col-form-label"> {{ field.name }} </label>
+                <div class="col-10">{{ field }}</div>
+            </div>
+
+        {% endfor %}
+
+        <button class="btn btn-primary" type="submit" name="button">Add Detail</button>
+
+    </form>
+
+</div>
+
+<br>
+
+{% endblock %}
