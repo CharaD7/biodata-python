@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+
+{% block body %}
+<br>
+
+<div class="button-group">
+
+    <a href="{% url 'test_app:index' %}" class="btn btn-primary btn-md" role="button"> Go Back</a>
+
+    <a href="{% url 'test_app:add_detail' %}" class="btn btn-primary btn-md" role="button"> Add Custom Detail</a>
+
+    <a href="{% url 'test_app:upload_detail' %}" class="btn btn-primary btn-md" role="button"> Upload Detail</a>
+
+    <a href="/admin" class="btn btn-primary btn-md" role="button"> View History</a>
+
+</div>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th class="font-weight-bold">ID</th>
+            <th class="font-weight-bold">First Name</th>
+            <th class="font-weight-bold">Last Name</th>
+            <th class="font-weight-bold">Age</th>
+            <th class="font-weight-bold">Gender</th>
+            <th class="font-weight-bold">Address</th>
+            <th class="font-weight-bold">Date of Birth</th>
+            <th class="font-weight-bold">Email</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for detail in details%}
+
+            <tr>
+                <td>{{ detail.pk }}</td>
+                <td>{{ detail.firstname }}</td>
+                <td>{{ detail.lastname }}</td>
+                <td>{{ detail.age }}</td>
+                <td>{{ detail.gender }}</td>
+                <td>{{ detail.address }}</td>
+                <td>{{ detail.date_of_birth }}</td>
+                <td>{{ detail.email }}</td>
+                <td>
+                    <a href="{% url 'test_app:edit_detail' detail.pk %}" class="btn btn-warning btn-sm" role="button">Edit</a>
+                    <a href="{% url 'test_app:delete_detail' detail.pk %}" class="btn btn-danger btn-sm" role="button">Delete</a>
+                </td>
+            </tr>
+
+        {% endfor %}
+    </tbody>
+</table>
+
+<br>
+
+{% endblock %}
