@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+
+{% block body %}
+<br>
+
+<p class="text text-success">Welcome to the test app page. Kindly click the buttons below to navigate through the app</p>
+
+
+<div class="button-group">
+
+    <a href="{% url 'test_app:biodata' %}" class="btn btn-primary btn-md" role="button"> Preview Details</a>
+
+    <a href="{% url 'test_app:add_detail' %}" class="btn btn-primary btn-md" role="button"> Add Custom Detail</a>
+
+    <a href="/" class="btn btn-primary btn-md" role="button"> View History</a>
+
+</div>
+
+
+<br>
+
+{% endblock %}
