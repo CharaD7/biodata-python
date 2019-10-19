@@ -29,7 +29,7 @@ pyexcel-io==0.5.20
 pyexcel-webio==0.1.4
 pyexcel-xls==0.5.8
 pytz==2019.3
-PyYAML==3.11
+PyYAML==5.1
 rabbitmq==0.2.0
 six==1.12.0
 sqlparse==0.3.0
