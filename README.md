@@ -11,3 +11,13 @@ This app runs on a docker container with celery and rabbitmq handling some taks/
 -  Build the docker file by running the `docker build .` command in the root directory. This will build and install all necessary dependencies needed to run the app in the docker image.
 -  Install the custom mysql client in the root directory by running `docker-compose run "pip install mysqlclient-1.4.4-cp38-cp38-win32.whl"`
 -  Download any MySQL database server for running on the system.
+-  Create a database with the below configurations:
+  
+        'NAME': 'biodata_db',
+        'USER': 'biodata_admin',
+        'PASSWORD': 'NrfrX2E31tvSZkIi',
+        'HOST': 'localhost',
+        'PORT': '3306',
+
+- The configuration above is found on _line 79_ of the _settings.py_ file. You may change the values to suit your custom configuration but be certain it tallies with the configuration of your MySQL server.
+- 
