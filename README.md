@@ -20,4 +20,4 @@ This app runs on a docker container with celery and rabbitmq handling some taks/
         'PORT': '3306',
 
 - The configuration above is found on _line 79_ of the _settings.py_ file. You may change the values to suit your custom configuration but be certain it tallies with the configuration of your MySQL server.
-- 
+- Be sure user creatd has inherited permissions of a mySQL root user.
