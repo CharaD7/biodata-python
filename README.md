@@ -8,6 +8,7 @@ This app runs on a docker container with celery and rabbitmq handling some taks/
 - First, clone the repo [here](https://github.com/CharaD7/biodata-python.git)
 - Extract data and change into the cloned directory. Now open the directory with your prefered text editor or IDE. You can as well do so by just opening the extracted folder with any prefered editor or IDE of your choice.
 - Download and install [docker](https://hub.docker.com/) based on your OS platform. Be sure to have a minimum RAM of 4gb to be able to run docker. Read the OS-based [documentation](https://docs.docker.com/) here to be able to fully run docker on your system.
+- To successfully run docker, make sure you have hyper-V and virtualization support enabled in your bios where necessary. 
 -  Download any MySQL database server for running on the system.
 
 
@@ -46,7 +47,11 @@ This app runs on a docker container with celery and rabbitmq handling some taks/
 
 2. Should you have problems installing mysql-connector, kindly comment it out in the requirements.txt file and run in your terminal `pip install mysqlclient-1.4.4.whl` to get the custom client installed. This should fix the problem with installing the required mysql client for the Django application.
 
-3. In a case where build fails, the environment is already set up in the directory so ignore and run `python manage.py runserver` after following the procedures to setting up your database server and docker environment.
+3. If you get this error: <span style = "color: red; font-family: Consolas;"> ERROR: Service 'celery_worker' failed to build: unauthorized: authentication required,</span> then you will need to add `COMPOSE_CONVERT_WINDOWS_PATHS` to your system variables and set the value to 1. Thereafter, open the docker interface and go to shared drives, check the drive in which docker is installed and you should be okay.
+
+4. In a case where build fails, the environment is already set up in the directory so ignore and run `python manage.py runserver` after following the procedures to setting up your database server and docker environment.
+
+5. Docker also fails producing timeout errors where internet connection is not stable. Be sure to use reliable and fast internet connection.
 
 ***
 
