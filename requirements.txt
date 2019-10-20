@@ -14,7 +14,7 @@ jdcal==1.4.1
 kombu==4.6.5
 MarkupPy==1.14
 more-itertools==7.2.0
-mysqlclient==1.4.4
+# mysqlclient==1.4.4
 odfpy==1.4.0
 openpyxl==3.0.0
 pep517==0.7.0
