@@ -42,9 +42,11 @@ This app runs on a docker container with celery and rabbitmq handling some taks/
 
 ## Setback Manouvers
 
-In a case where you try to build docker and it fails because you have compatibility issues, visit the [docker documentation](https://docs.docker.com/) and carefully follow the setup and run procedures to successfully run the build for docker.
+1. In a case where you try to build docker and it fails because you have compatibility issues, visit the [docker documentation](https://docs.docker.com/) and carefully follow the setup and run procedures to successfully run the build for docker.
 
-In a case where build fails, the environment is already set up in the directory so ignore and run `python manage.py runserver` after following the procedures to setting up your database server and docker environment.
+2. Should you have problems installing mysql-connector, kindly comment it out in the requirements.txt file and run in your terminal `pip install mysqlclient-1.4.4.whl` to get the custom client installed. This should fix the problem with installing the required mysql client for the Django application.
+
+3. In a case where build fails, the environment is already set up in the directory so ignore and run `python manage.py runserver` after following the procedures to setting up your database server and docker environment.
 
 ***
 
