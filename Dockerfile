@@ -9,10 +9,10 @@ COPY ./requirements.txt /requirements.txt
 COPY ./mysqlclient-1.4.4.whl /mysqlclient-1.4.4.whl
 COPY ./entrypoint.sh /entrypoint.sh
 
+ENTRYPOINT ["/entrypoint.sh"]
+
 RUN chmod +x /entrypoint.sh
 RUN pip install mysqlclient-1.4.4.whl && -r requirements.txt
-
-ENTRYPOINT ["/entrypoint.sh"]
 
 RUN mkdir /app
 WORKDIR /app
