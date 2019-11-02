@@ -24,7 +24,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')  # Registering the templates
 SECRET_KEY = 'hw^&wztv2qb!zp0t)5+5qh)g_#p2hl9q#(r7-*dz+*4^l)_vq2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True # We are not under production so this convention is safe to use.
 
 ALLOWED_HOSTS = ['*']
 
@@ -86,7 +86,7 @@ DATABASES = {
         'NAME': 'biodata_db',
         'USER': 'biodata_admin',
         'PASSWORD': 'NrfrX2E31tvSZkIi',
-        'HOST': 'mysql',
+        'HOST': 'localhost',
         'PORT': '3306',
         # The options below is necessary to avoid some table naming errors
         'OPTIONS': {
