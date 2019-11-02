@@ -26,7 +26,7 @@ SECRET_KEY = 'hw^&wztv2qb!zp0t)5+5qh)g_#p2hl9q#(r7-*dz+*4^l)_vq2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'import_export',
 ]
 
-CELERY_BROKER_URL = "amqp://rabbitmq"
+# CELERY_BROKER_URL = "amqp://rabbitmq"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -80,13 +80,11 @@ WSGI_APPLICATION = 'app.wsgi.application'
 
 DATABASES = {
     'default': {
-        # mysql client was downloaded from https://www.lfd.uci.edu/~gohlke/pythonlibs/#mysqlclient
-        # Compatible version with system as at development time was mysqlclient-1.4.4-cp38-cp38-win32.whl
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'biodata_db',
         'USER': 'biodata_admin',
         'PASSWORD': 'NrfrX2E31tvSZkIi',
-        'HOST': 'localhost',
+        'HOST': 'mysql',
         'PORT': '3306',
         # The options below is necessary to avoid some table naming errors
         'OPTIONS': {

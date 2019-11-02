@@ -1,26 +1,27 @@
-version: "3.7"
+version: "3"
 
 services:
-  python: &python
+  python: &python3.8
+    image: python:3.8
     build:
       context: .
-      dockerfile: Dockerfile
-    ports:
-      - "8000:8000"
+      dockerfile: 'app/docker/python/Dockerfile'
     volumes:
-      - ./app:/app
-    command: >
-      sh -c "python manage.py runserver 0.0.0.0:8000"
+      - './app:/app'
+    ports:
+      - '8000:8000'
     depends_on:
-      - rabbitmq
-      - celery_worker
+      - 'rabbitmq'
+      - 'celery_worker'
+
   # rabbit message queue
   rabbitmq:
-    image: rabbitmq:3.8-alpine
-  # celery worker service
+    image: 'rabbitmq:3.7-alpine'
+  celery worker service
   celery_worker:
     <<: *python
-    command: celery -A biodata worker --loglevel=info 
+    command: 'ln -s /run/shm /dev/shm && celery -A biodata worker --loglevel=info'
     ports: []
     depends_on:
-      - rabbitmq
+      - 'rabbitmq'
+  

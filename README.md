@@ -33,11 +33,12 @@ This app runs on a docker container with celery and rabbitmq handling some taks/
 ## Running the application
 
 -  Build the docker file by running the `docker build .` command in the root directory. This will build and install all necessary dependencies needed to run the app in the docker image.
-- Run `docker-compose exec python python manage.py makemigrations` after successfully configuring your server
-- Next, run `docker-compose exec python python manage.py migrate` to apply changes
+- Run `docker-compose exec app python manage.py makemigrations` after successfully configuring your server
+- Next, run `docker-compose exec app python manage.py migrate` to apply changes
 - Create django-superuser by running the command `docker-compose run app sh -c "python manage.py createsuperuser"`. Follow the triggers to create a superuser. Kindly desist from using admin as username for admin user.
 - Run `docker-compose up` to start the runserver in docker container.
-- Open up a browser and type in the address bar _`127.0.0.1:8000`_ to view the homepage.
+- Open a new console tab and run `docker-compose run app sh -c "python manage.py runserver"`
+- Fire up a browser and type in the address bar _`127.0.0.1:8000`_ to view the homepage.
 
 ***
 
