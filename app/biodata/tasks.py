@@ -1,8 +1,8 @@
 # Create your tasks here
 from __future__ import absolute_import, unicode_literals
-from celery import shared_task
+# from celery import shared_task
 
-@shared_task
+# @shared_task
 # This is the shared task
 def upload_detail(request):
     if request.method == 'GET':

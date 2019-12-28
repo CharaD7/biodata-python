@@ -13,7 +13,11 @@ class Biodata(models.Model):
     gender = models.CharField(max_length = 20, choices = GENDER_CHOICES)
     address = models.CharField(max_length = 200)
     date_of_birth = models.DateField()
-    email = models.EmailField(max_length = 200)
+    date_of_employment = models.DateField()
+    position = models.CharField(max_length=100)
+    department = models.CharField(max_length = 100)
+    salary = models.IntegerField(max_length = 20)
+    supervisors = models.CharField(max_length = 100)
 
 
     def __str__(self):

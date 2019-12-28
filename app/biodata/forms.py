@@ -16,6 +16,8 @@ class BiodataForm(forms.ModelForm):
             'gender',
             'address',
             'date_of_birth',
-            'email'
+            'date_of_employment',
+            'salary',
+            'supervisors',
             )
             
