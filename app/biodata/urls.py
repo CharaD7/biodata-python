@@ -1,7 +1,9 @@
 # from django.urls import path
 from django.conf.urls import url
+from django.urls import path
 
 from .views import *
+from .tasks import upload_detail
 
 
 app_name = 'biodata'
@@ -13,4 +15,5 @@ urlpatterns = [
     url(r'^edit_detail/(?P<pk>\d+)$', edit_detail, name = 'edit_detail'),
     url(r'^delete_detail/(?P<pk>\d+)$', delete_detail, name = 'delete_detail'),
     url(r'^upload_detail/$', upload_detail, name = 'upload_detail'),
+    path('user-registration', user_registration, name='user_registration')
 ]

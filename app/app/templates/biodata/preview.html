@@ -10,7 +10,7 @@
 
     <a href="{% url 'biodata:add_detail' %}" class="btn btn-primary btn-md" role="button"> Add Custom Detail</a>
 
-    <a href="{% url 'biodata:do_upload' %}" class="btn btn-primary btn-md" role="button"> Upload Detail</a>
+    <a href="{% url 'biodata:upload_detail' %}" class="btn btn-primary btn-md" role="button"> Upload Detail</a>
 
     <a href="/admin" class="btn btn-primary btn-md" role="button"> View History</a>
 
@@ -23,10 +23,11 @@
             <th class="font-weight-bold">First Name</th>
             <th class="font-weight-bold">Last Name</th>
             <th class="font-weight-bold">Age</th>
-            <th class="font-weight-bold">Gender</th>
-            <th class="font-weight-bold">Address</th>
             <th class="font-weight-bold">Date of Birth</th>
-            <th class="font-weight-bold">Email</th>
+            <th class="font-weight-bold">Date of Employment</th>
+            <th class="font-weight-bold">Position</th>
+            <th class="font-weight-bold">Salary</th>
+            <th class="font-weight-bold">Supervisors</th>
         </tr>
     </thead>
 
@@ -38,10 +39,11 @@
                 <td>{{ detail.firstname }}</td>
                 <td>{{ detail.lastname }}</td>
                 <td>{{ detail.age }}</td>
-                <td>{{ detail.gender }}</td>
-                <td>{{ detail.address }}</td>
                 <td>{{ detail.date_of_birth }}</td>
-                <td>{{ detail.email }}</td>
+                <td>{{ detail.date_of_employment }}</td>
+                <td>{{ detail.position }}</td>
+                <td>{{ detail.salary }}</td>
+                <td>{{ detail.supervisors }}</td>
                 <td>
                     <a href="{% url 'biodata:edit_detail' detail.pk %}" class="btn btn-warning btn-sm" role="button">Edit</a>
                     <a href="{% url 'biodata:delete_detail' detail.pk %}" class="btn btn-danger btn-sm" role="button">Delete</a>

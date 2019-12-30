@@ -1,18 +1,38 @@
-import csv, io
+
+from django.db.models.signals import post_save
 from django.shortcuts import render, redirect, render_to_response, get_object_or_404
 from django.contrib import messages
-# from django.contrib.auth.decorators import permission_required
-
-
-
+import django_excel as excel
+from django import forms
+from django.contrib.auth.decorators import login_required
+from django.conf import settings
+from django.db import models
+from django.template import RequestContext
+from django.http import HttpResponseBadRequest
 from .models import *
-from .forms import BiodataForm
-# from .tasks import upload_detail
+from .forms import BiodataForm, UserRegistrationForm
+
+
+
+
+def user_registration(request):
+    form = UserRegistrationForm(request.POST or None, request.FILES or None)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully registerd')
+            return redirect('/preview')
+        # If the request params is valid save the data else return form with error
+    return render(request, 'registration/registration.html', {'form': form})
+
+
 
 # Create your views here.
+@login_required()
 def index(request):
-    return render(request, 'biodata/index.html')
+    return render(request, 'biodata/index.html', {'user': request.user})
 
+@login_required()
 def preview(request):
     details = Biodata.objects.all()
     context = {
@@ -20,11 +40,12 @@ def preview(request):
     }
     return render(request, 'biodata/preview.html', context)
 
+@login_required()
 def  history(request):
     return redirect('/admin/')
 
 
-
+@login_required()
 def add_detail(request):
     if request.method == "POST":
         form = BiodataForm(request.POST)
@@ -37,6 +58,8 @@ def add_detail(request):
         form = BiodataForm
         return render(request, 'biodata/add_detail.html', {'form':form})
 
+
+@login_required()
 def edit_detail(request, pk):
     detail = get_object_or_404(Biodata, pk=pk)
 
@@ -50,6 +73,8 @@ def edit_detail(request, pk):
 
         return render(request, 'biodata/edit_detail.html', {'form':form})
 
+
+@login_required()
 def delete_detail(request, pk):
     Biodata.objects.filter(id=pk).delete()
     details = Biodata.objects.all()
@@ -59,30 +84,45 @@ def delete_detail(request, pk):
     return render(request, 'biodata/preview.html', context)
 
 
+
+def is_valid_form(values):
+    valid = True
+    for field in values:
+        if field == '':
+            valid = False
+    return valid
+
+
+
+
+
+class UploadFileForm(forms.Form):
+    file = forms.FileField()
+
+
+@login_required()
 def upload_detail(request):
-    if request.method == 'GET':
-        return render(request, 'biodata/upload_detail.html')
-    
-    csv_file = request.FILES['file']
-    
-    if not csv_file.name.endswith('.csv'):
-        messages.error(request, 'This is not a csv file, please upload a csv file.')
-    
-    data_set = csv_file.read().decode('UTF-8')
+    if request.method == "POST":
+        form = UploadFileForm(request.POST, request.FILES)
+        if form.is_valid():
+            filehandle = request.FILES['file']
+            return excel.make_response(filehandle.get_sheet(), "xlsx")
+        else:
+            return HttpResponseBadRequest()
+    else:
+        form = UploadFileForm()
+        context_instance = RequestContext(request)
+    return render_to_response('biodata/upload_detail.html',
+                              {'form': form},
+                              context_instance
+                              )
 
-    io_string = io.StringIO(data_set) # Putting it in a stream
-    next(io_string)
+                              
+    # return render_to_response('biodata/preview.html',
+    #                           {'form': form},
+    #                           context_instance=RequestContext(request)
+    #                           )
 
-    for column in csv.reader(io_string, delimiter = ',', quotechar = '|'):
-        # _, allows us to skip the .save() call
-        _, created = Biodata.objects.update_or_create(
-            firstname = column[0],
-            lastname = column[1],
-            age = column[2],
-            gender = column[3],
-            address = column[4],
-            date_of_birth = column[5],
-            email = column[6]
-        )
-        context = {}
-        return render(request, 'biodata/preview.html', context, prompt)
+# def download(request):
+#     sheet = excel.pe.Sheet([[1, 2],[3, 4]])
+#     return excel.make_response(sheet, "xlsx")

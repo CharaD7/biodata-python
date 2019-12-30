@@ -14,7 +14,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')  # Registering the templates directory
+TEMPLATES_DIR = os.path.join(BASE_DIR, 'app/templates')  # Registering the templates directory
 
 
 # Quick-start development settings - unsuitable for production
@@ -37,12 +37,23 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sites',
     'django.contrib.staticfiles',
     'biodata',
     'import_export',
 ]
 
-# CELERY_BROKER_URL = "amqp://rabbitmq"
+# Auth
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend'
+)
+SITE_ID = 1
+LOGIN_REDIRECT_URL = '/preview'
+LOGOUT_REDIRECT_URL = '/'
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -57,6 +68,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'app.urls'
 
 CELERY_BORKER_URL = "amqp://rabbitmq"
+
 
 TEMPLATES = [
     {
@@ -128,8 +140,15 @@ USE_L10N = True
 USE_TZ = True
 
 
+# Django-excel plugin for excel xlsx file uploads
+FILE_UPLOAD_HANDLERS = (
+    "django_excel.ExcelMemoryFileUploadHandler",
+    "django_excel.TemporaryExcelFileUploadHandler"
+    )
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static')),
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'app/static')),
