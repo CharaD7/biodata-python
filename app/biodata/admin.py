@@ -7,5 +7,5 @@ from .models import Biodata, UserProfile
 @admin.register(UserProfile)
 # admin.site.register(UserProfile)
 
-class BiodataAdmin():
+class BiodataAdmin(admin.ModelAdmin):
     pass
