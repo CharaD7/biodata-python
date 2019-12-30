@@ -1,4 +1,3 @@
-from import_export.admin import ImportExportModelAdmin
 from django.contrib import admin
 from .models import Biodata, UserProfile
 
@@ -8,5 +7,5 @@ from .models import Biodata, UserProfile
 @admin.register(UserProfile)
 # admin.site.register(UserProfile)
 
-class BiodataAdmin(ImportExportModelAdmin):
+class BiodataAdmin():
     pass

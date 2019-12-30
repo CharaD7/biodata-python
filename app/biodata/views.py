@@ -93,9 +93,6 @@ def is_valid_form(values):
     return valid
 
 
-
-
-
 class UploadFileForm(forms.Form):
     file = forms.FileField()
 
@@ -117,7 +114,7 @@ def upload_detail(request):
                               context_instance
                               )
 
-                              
+
     # return render_to_response('biodata/preview.html',
     #                           {'form': form},
     #                           context_instance=RequestContext(request)
