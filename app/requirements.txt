@@ -19,7 +19,6 @@ jdcal==1.4.1
 kombu==3.0.37
 lml==0.0.9
 MarkupPy==1.14
-mysqlclient==1.4.6
 oauthlib==3.1.0
 odfpy==1.4.0
 openpyxl==3.0.2
