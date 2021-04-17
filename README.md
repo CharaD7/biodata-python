@@ -1,5 +1,5 @@
 # biodata
-**A Biodata app with MDB bootstrap  written in python==3.8 and Djanago==3**
+**A Biodata app with MDB bootstrap  written in python==3.8 and Djanago==2.9**
 
 This app runs on a vagrant container with celery and rabbitmq handling some taks/services within the app. To fully delpoy and use the app, simply follow the guidelines below.
 
@@ -40,12 +40,17 @@ This app runs on a vagrant container with celery and rabbitmq handling some taks
 
 ## Setback Manouvers
 
-1. Should you have problems installing mysql-connector, kindly comment it out in the requirements.txt file and run in your terminal `pip install mysqlclient-1.4.4.whl` to get the custom client installed. This should fix the problem with installing the required mysql client for the Django application.
+1. Should you have problems installing mysql-connector, kindly comment it out in the requirements.txt file,
+visit _`https://www.lfd.uci.edu/~gohlke/pythonlibs/#mysqlclient`_ to download the wheel file for your python version
+and system architecture. Then run in your terminal `pip install mysqlclient-1.4.6-cp<python-version>-cp<python-version>-win_amd<system-architecture>.whl` to get the custom client installed. This should fix the problem with installing the required mysql client for the Django application.
 
 2. If you get this error: `ERROR: Service 'celery_worker' failed to build: unauthorized: authentication required`, then you will need to add `COMPOSE_CONVERT_WINDOWS_PATHS` to your system variables and set the value to 1. Thereafter, open the docker interface and go to shared drives, check the drive in which docker is installed and you should be okay.
 
 3. In a case where build fails, the environment is already set up in the directory so ignore and run `python manage.py runserver` after following the procedures to setting up your database server and docker environment.
+   
+4. Run `python manage.py createsuperuser` to create an admin user for your django admin panel
 
+5. Run `python manage.py runserver` in the app directory
 
 ***
 
