@@ -1,5 +1,5 @@
 # biodata
-**A Biodata app with MDB bootstrap  written in python==3.8 and Djanago==2.9**
+**A Biodata app with MDB bootstrap  written in python==3.7 and Djanago==2.7**
 
 This app runs on a vagrant container with celery and rabbitmq handling some taks/services within the app. To fully delpoy and use the app, simply follow the guidelines below.
 
