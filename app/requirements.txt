@@ -10,7 +10,7 @@ Django==2.1
 django-allauth==0.41.0
 django-celery==3.3.1
 django-crispy-forms==1.8.1
-django-debug-toolbar==2.1
+django-debug-toolbar==2.2.1
 django-excel==0.0.10
 django-import-export==1.2.0
 et-xmlfile==1.0.1
