@@ -14,7 +14,7 @@ django-debug-toolbar==2.1
 django-excel==0.0.10
 django-import-export==1.2.0
 et-xmlfile==1.0.1
-idna==2.8
+idna==3.7
 jdcal==1.4.1
 kombu==3.0.37
 lml==0.0.9
