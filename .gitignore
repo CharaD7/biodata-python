@@ -100,5 +100,10 @@ venv.bak/
 # mkdocs documentation
 /site
 
+# Cache files
+._.DS_Store
+._docker-compose.yml
+._README.md
+
 # mypy
 .mypy_cache/
